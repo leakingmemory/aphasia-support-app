@@ -5,20 +5,19 @@
 #ifndef APHASIA_APHASIAFRAME_H
 #define APHASIA_APHASIAFRAME_H
 
+#include <vector>
 #include <wx/wx.h>
 #include <wx/notebook.h>
 #include <wx/listctrl.h>
 
 template <typename Sub> struct CategorySelection {
-    typedef typename Sub phrase_t;
-
     wxString Name;
-    std::vector<phrase_t> Phrases;
+    std::vector<Sub> Phrases;
 
     CategorySelection(const wxString &name) : Name() {
         Name = name;
     }
-    template <int N> CategorySelection(const wxString &name, const phrase_t (&phrases)[N]) : CategorySelection(name) {
+    template <int N> CategorySelection(const wxString &name, const Sub (&phrases)[N]) : CategorySelection(name) {
         for (int i = 0; i < N; i++) {
             Phrases.push_back(phrases[i]);
         }

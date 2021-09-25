@@ -2,6 +2,7 @@
 // Created by jeo on 23.09.2021.
 //
 
+#include <memory>
 #include "AphasiaFrame.h"
 #include "guistring.h"
 

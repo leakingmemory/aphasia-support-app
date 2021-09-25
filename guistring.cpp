@@ -2,6 +2,8 @@
 // Created by jeo on 24.09.2021.
 //
 
+#if defined(_WIN32) || defined(WIN32)
+
 #include <iostream>
 #include <string>
 #include <locale>
@@ -9,8 +11,6 @@
 #include <memory>
 
 #include "guistring.h"
-
-static std::vector<std::shared_ptr<wxString>> strings{};
 
 wxString utf8guistr(const std::wstring &bit16str_utf8) {
     wxString guistr{};
@@ -44,3 +44,4 @@ wxString utf8guistr(const std::wstring &bit16str_utf8) {
     }
     return guistr;
 }
+#endif
