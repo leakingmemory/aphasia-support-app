@@ -6,9 +6,12 @@
 #define APHASIA_APHASIAFRAME_H
 
 #include <vector>
+#include <memory>
 #include <wx/wx.h>
 #include <wx/notebook.h>
 #include <wx/listctrl.h>
+
+#define MAIN_PHRASE_WIDTH 150
 
 template <typename Sub> struct CategorySelection {
     wxString Name;
@@ -27,18 +30,12 @@ template <typename Sub> struct CategorySelection {
 class AphasiaFrame : public wxFrame {
 private:
     wxNotebook *tabControl;
-    wxListView *mainPhrase;
-    wxListView *secondPhrase;
+    std::shared_ptr<std::vector<CategorySelection<CategorySelection<wxString>>>> mainCategories;
 private:
     void UpdateSizes(const wxSize &size);
-    std::vector<CategorySelection<wxString>> *OnMainCatChanged(std::vector<CategorySelection<CategorySelection<wxString>>> &);
-    void OnPhraseChanged(std::vector<CategorySelection<wxString>> &);
-    void ClearSecondaryPhrases();
     void OnResize(wxSizeEvent &);
 public:
     AphasiaFrame(const wxString &title);
-    std::vector<CategorySelection<wxString>> &OnMainCatChanged(CategorySelection<CategorySelection<wxString>> &);
-    void OnPhraseChanged(CategorySelection<wxString> &);
 };
 
 
